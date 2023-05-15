@@ -4,9 +4,16 @@
 
 <mapper namespace="com.shop.mapper.AdminMapper">
 
+	<!-- 상품 등록 -->
 	<insert id="bookEnroll">
 		insert into vam_book(bookId,bookName, authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents)
 		values(book_seq.nextval, #{bookName},#{authorId},#{publeYear},#{publisher},#{cateCode},#{bookPrice}, #{bookStock}, #{bookDiscount},#{bookIntro},#{bookContents})
 	</insert>
+	
+	<!-- 카테고리 리스트 -->
+	<select id="cateList" resultType="com.shop.model.CateVO">
+		select * from vam_bcate 
+		order by catecode
+	</select>
 
 </mapper>
