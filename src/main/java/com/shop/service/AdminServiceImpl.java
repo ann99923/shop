@@ -27,6 +27,7 @@ public class AdminServiceImpl implements AdminService {
 		adminMapper.bookEnroll(book);
 	}
 	
+	// 카테고리 리스트
 	@Override
 	public List<CateVO> cateList() {
 		// TODO Auto-generated method stub
