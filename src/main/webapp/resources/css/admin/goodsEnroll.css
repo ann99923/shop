@@ -210,6 +210,13 @@ input[name='publeYear'] {
 	font-weight: 300;
 }
 
+/* 할인 가격 문구 */
+.step_val{
+	display: block;
+	padding-top: 5px;
+	font-weight: 500;
+}
+
 /* float 속성 해제 */
 .clearfix{
 	clear: both;
