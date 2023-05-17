@@ -154,6 +154,7 @@
 		
 		/* 취소 버튼 */
 		$("#cancelBtn").on("click", function(e){
+			e.preventDefault();
 			location.href="/admin/goodsManage";
 		});
 		
