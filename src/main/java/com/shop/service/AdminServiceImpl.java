@@ -58,4 +58,13 @@ public class AdminServiceImpl implements AdminService {
 		log.info("(service)goodsGetDetail..." + bookId);
 		return adminMapper.goodsGetDetail(bookId);
 	}
+	
+	//상품 수정
+	@Override
+	public int goodsModify(BookVO vo) {
+		// TODO Auto-generated method stub
+		log.info("goodsModify...");
+		
+		return adminMapper.goodsModify(vo);
+	}
 }

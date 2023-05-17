@@ -160,7 +160,7 @@ public class AdminController {
 	}
 	
 	// 상품 상세 조회 페이지
-	@GetMapping("/goodsDetail")
+	@GetMapping({"/goodsDetail", "/goodsModify"})
 	public void goodsGetInfoGET(int bookId, Criteria cri, Model model) throws JsonProcessingException {
 		logger.info("goodsGetInfo()..." + bookId);
 		
@@ -174,6 +174,16 @@ public class AdminController {
 		
 		// 조회 페이지 정보
 		model.addAttribute("goodsInfo", adminService.goodsGetDetail(bookId));
+	}
+	
+	// 상품 정보 수정
+	@PostMapping("/goodsModify")
+	public String goodsModifyPOST(BookVO vo, RedirectAttributes rttr) {
+		logger.info("goodsModifyPOST..." + vo);
+		
+		int result = adminService.goodsModify(vo);
+		rttr.addFlashAttribute("modify_result", result);
+		return "redirect:/admin/goodsManage";
 	}
 	
 }

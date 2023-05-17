@@ -102,20 +102,23 @@
 	
 	<script>
 		$(document).ready(function(){
-			let eResult = '<c:out value="${enroll_result}" />';
 			
+			// 등록 성공 시
+			let eResult = '<c:out value="${enroll_result}" />';	
 			checkResult(eResult);
-			
-			function checkResult(result){
-				
+			function checkResult(result){			
 				if(result === ''){
 					return;
-				}
-				
+				}		
 				alert("상품'" + eResult + "'을 등록하였습니다.")
 			}
 			
-			
+			// 수정 성공 시
+			let modify_result = '${modify_result}';
+			if(modify_result == 1){
+				alert("수정완료");
+			}
+				
 		});
 		
 		let searchForm = $('#searchForm');

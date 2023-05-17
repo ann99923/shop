@@ -119,7 +119,7 @@
 				}
 				alert("작가 '${enroll_result}'을 등록하였습니다.");
 			}
-			
+					
 			let mresult = '<c:out value="${modify_result}" />';
 			checkmResult(mresult);
 			
