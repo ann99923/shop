@@ -37,10 +37,22 @@ public class AdminController {
 		logger.info("관리자 페이지 이동");
 	}
 	
-	// 상품 관리
+	/* 상품 관리 페이지 접속 */
 	@GetMapping("/goodsManage")
-	public void goodsManageGET() throws Exception {
+	public void goodsManageGET(Criteria cri, Model model) throws Exception {
 		logger.info("상품 관리 페이지 접속");
+		
+		// 상품 리스트 데이터
+		List list = adminService.goodsGetList(cri);
+		
+		if(!list.isEmpty()) {
+			model.addAttribute("list", list);
+		}else {
+			model.addAttribute("listCheck", "empty");
+		}
+		
+		// 페이지 인터페이스 데이터
+		model.addAttribute("pageMaker", new PageDTO(cri, adminService.goodsGetTotal(cri)));
 	}
 	
 	//

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.shop.mapper.AdminMapper;
 import com.shop.model.BookVO;
 import com.shop.model.CateVO;
+import com.shop.model.Criteria;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -33,5 +34,17 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		log.info("(service)cateList...");
 		return adminMapper.cateList();
+	}
+	
+	@Override
+	public List<BookVO> goodsGetList(Criteria cri) {
+		// TODO Auto-generated method stub
+		return adminMapper.goodsGetList(cri);
+	}
+	
+	@Override
+	public int goodsGetTotal(Criteria cri) {
+		// TODO Auto-generated method stub
+		return adminMapper.goodsGetTotal(cri);
 	}
 }

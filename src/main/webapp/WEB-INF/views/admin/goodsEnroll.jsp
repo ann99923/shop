@@ -181,7 +181,7 @@
 			let cateCode = $("select[name='cateCode']").val();
 			let bookPrice = $("input[name='bookPrice']").val();
 			let bookStock = $("input[name='bookStock']").val();
-			let bookDiscount = $("discount_interface").val();
+			let bookDiscount = $("#discount_interface").val();
 			let bookIntro = $(".bit p").html();
 			let bookContents = $(".bct p").html();
 			

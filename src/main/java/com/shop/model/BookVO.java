@@ -14,7 +14,7 @@ public class BookVO {
 	private String publeYear;		// 출판일
 	private String publisher;	// 출판사
 	private String cateCode;	// 카테고리 코드
-	private String cateNeme;	// 카테고리 이름
+	private String cateName;	// 카테고리 이름
 	private int bookPrice;		// 상품 가격
 	private int bookStock;		// 상품 재고
 	private double bookDiscount;	// 상품 할인율
