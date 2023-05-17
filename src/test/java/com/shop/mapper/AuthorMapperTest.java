@@ -64,18 +64,28 @@ public class AuthorMapperTest {
 //	}
 	
 	// 작가 수정 테스트
+//	@Test
+//	public void authorModifyTest() throws Exception {
+//		AuthorVO author = new AuthorVO();
+//		
+//		author.setAuthorId(1);
+//		System.out.println("수정 전.." + mapper.authorGetDetail(author.getAuthorId()));
+//		
+//		author.setAuthorName("수정테스트");
+//		author.setNationId("02");
+//		author.setAuthorIntro("수정테스트");
+//		mapper.authorModify(author);
+//		
+//		System.out.println("수정 후.." + mapper.authorGetDetail(author.getAuthorId()));
+//	}
+	
+	// 작가 삭제 테스트
 	@Test
-	public void authorModifyTest() throws Exception {
-		AuthorVO author = new AuthorVO();
-		
-		author.setAuthorId(1);
-		System.out.println("수정 전.." + mapper.authorGetDetail(author.getAuthorId()));
-		
-		author.setAuthorName("수정테스트");
-		author.setNationId("02");
-		author.setAuthorIntro("수정테스트");
-		mapper.authorModify(author);
-		
-		System.out.println("수정 후.." + mapper.authorGetDetail(author.getAuthorId()));
+	public void authorDeleteTest() {
+		int authorId = 1795;
+		int result = mapper.authorDelete(authorId);
+		if(result == 1) {
+			System.out.println("삭제 성공");
+		}
 	}
 }

@@ -21,5 +21,8 @@ public interface AuthorService {
 	
 	// 작가 수정
 	public int authorModify(AuthorVO author) throws Exception;
+	
+	// 작가 삭제
+	public int authorDelete(int authorId);
 
 }

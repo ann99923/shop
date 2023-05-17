@@ -108,8 +108,9 @@
 	<%@include file="../include/admin/footer.jsp" %>
 	
 	<script>
-		// 등록 완료 시
+
 		$(document).ready(function(){
+			// 등록 완료 시
 			let result = '<c:out value="${enroll_result}"/>';
 			checkResult(result);
 			
@@ -119,7 +120,8 @@
 				}
 				alert("작가 '${enroll_result}'을 등록하였습니다.");
 			}
-					
+			
+			// 수정 완료 시
 			let mresult = '<c:out value="${modify_result}" />';
 			checkmResult(mresult);
 			
@@ -129,6 +131,14 @@
 				}else if(mresult === '0'){
 					alert("작가 정보 수정을 하지 못했습니다.");
 				}
+			}
+			
+			// 삭제 완료 시
+			let delete_result = '${delete_result}';
+			if(delete_result == 1){
+				alert("삭제 완료");
+			}else if(delete_result == 2){
+				alert("해당 작가 데이터를 사용하고 있는 데이터가 있어서 삭제 할 수 없습니다.");
 			}
 		});
 		
