@@ -58,9 +58,17 @@ ul{
 /* 관리자페이지 네비 영역 */
 .admin_navi_area{
 	width: 20%;
-	float: left;
 	height: 100%;
+	float: left;	
 }
+
+.admin_navi_area li{
+	display: block;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+}
+
 .admin_navi_area li a{
 	display: block;
 	height: 100%;

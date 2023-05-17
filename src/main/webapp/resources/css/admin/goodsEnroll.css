@@ -162,10 +162,10 @@ input[name='publeYear'] {
 	margin-left: 15px;
 }
 
-.admin_navi_wrap li a:link{color: black;}
-.admin_navi_wrap li a:visited{color: black;}
-.admin_navi_wrap li a:active{color: black;}
-.admin_navi_wrap li a:hover{color: black;}
+.admin_navi_area li a:link{color: black;}
+.admin_navi_area li a:visited{color: black;}
+.admin_navi_area li a:active{color: black;}
+.admin_navi_area li a:hover{color: black;}
 
 .admin_list_01{
 	background-color: #c8c8c8;

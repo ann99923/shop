@@ -46,22 +46,30 @@ public class AdminMapperTest {
 //	}
 	
 	// 상품 리스트 & 상품 총 개수
+//	@Test
+//	public void goodsGetListTest() {
+//		Criteria cri = new Criteria();
+//		
+//		// 검색 조건
+//		cri.setKeyword("테스트");
+//		
+//		// 검색 리스트
+//		List list = mapper.goodsGetList(cri);
+//		for(int i=0; i<list.size(); i++) {
+//			System.out.println("result..." + i  + " : " + list.get(i));
+//		}
+//		
+//		// 상품 총 개수
+//		int result = mapper.goodsGetTotal(cri);
+//		System.out.println("result..." + result);
+//	}
+	
+	// 상품 조회 페이지
 	@Test
-	public void goodsGetListTest() {
-		Criteria cri = new Criteria();
-		
-		// 검색 조건
-		cri.setKeyword("테스트");
-		
-		// 검색 리스트
-		List list = mapper.goodsGetList(cri);
-		for(int i=0; i<list.size(); i++) {
-			System.out.println("result..." + i  + " : " + list.get(i));
-		}
-		
-		// 상품 총 개수
-		int result = mapper.goodsGetTotal(cri);
-		System.out.println("result..." + result);
+	public void goodsGetDetailTest() {
+		int bookId = 2320;
+		BookVO result = mapper.goodsGetDetail(bookId);
+		System.out.println("상품 조회 데이터: " + result);
 	}
 	
 

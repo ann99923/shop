@@ -36,15 +36,26 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.cateList();
 	}
 	
+	// 상품 리스트
 	@Override
 	public List<BookVO> goodsGetList(Criteria cri) {
 		// TODO Auto-generated method stub
+		log.info("(service)goodsGetList...");
 		return adminMapper.goodsGetList(cri);
 	}
 	
+	// 상품 총 개수
 	@Override
 	public int goodsGetTotal(Criteria cri) {
 		// TODO Auto-generated method stub
 		return adminMapper.goodsGetTotal(cri);
+	}
+	
+	// 상품 조회 페이지
+	@Override
+	public BookVO goodsGetDetail(int bookId) {
+		// TODO Auto-generated method stub
+		log.info("(service)goodsGetDetail..." + bookId);
+		return adminMapper.goodsGetDetail(bookId);
 	}
 }
