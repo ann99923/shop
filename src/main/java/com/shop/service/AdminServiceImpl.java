@@ -67,4 +67,13 @@ public class AdminServiceImpl implements AdminService {
 		
 		return adminMapper.goodsModify(vo);
 	}
+	
+	// 상품 삭제
+	@Override
+	public int goodsDelete(int bookId) {
+		// TODO Auto-generated method stub
+		log.info("goodsDelete..");
+		
+		return adminMapper.goodsDelete(bookId);
+	}
 }

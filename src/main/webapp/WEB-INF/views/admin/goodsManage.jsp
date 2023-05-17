@@ -118,6 +118,12 @@
 			if(modify_result == 1){
 				alert("수정완료");
 			}
+			
+			// 삭제 성공 시
+			let delete_result = '${delete_result}';
+			if(delete_result == 1){
+				alert("삭제완료");
+			}
 				
 		});
 		
