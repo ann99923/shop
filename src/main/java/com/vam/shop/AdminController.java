@@ -3,6 +3,7 @@ package com.vam.shop;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -238,6 +239,23 @@ public class AdminController {
 	@PostMapping(value="/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<AttachImageVO>> uploadAjaxActionPOST(MultipartFile uploadFile) {
 		logger.info("uploadAjaxActionPOST...");
+		
+		// 이미지 파일 체크
+		File checkFile = new File(uploadFile.getOriginalFilename());
+		String type= null;
+		
+		try {
+			type = Files.probeContentType(checkFile.toPath());
+			logger.info("MIME TYPE: " + type);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(!type.startsWith("image")) {
+			List<AttachImageVO> list = null;
+			return new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
+		}
+		
 		String uploadFolder = "C:\\upload";
 		
 		// 날짜 폴더 경로

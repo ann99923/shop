@@ -445,9 +445,11 @@
 			let fileList = fileInput[0].files;
 			let fileObj = fileList[0];
 			
+			/*
 			if(!fileCheck(fileObj.name, fileObj.size)){
 				return false;
 			}
+			*/
 			
 			formData.append("uploadFile", fileObj);
 			/* 파일이 여러개일 경우
@@ -465,6 +467,9 @@
 				dataType : 'json',
 				success : function(result){
 					console.log(result);
+				},
+				error : function(result){
+					alert("이미지 파일이 아닙니다.");
 				}
 			});
 		});
