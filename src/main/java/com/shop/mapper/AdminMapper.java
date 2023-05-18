@@ -2,6 +2,7 @@ package com.shop.mapper;
 
 import java.util.List;
 
+import com.shop.model.AttachImageVO;
 import com.shop.model.BookVO;
 import com.shop.model.CateVO;
 import com.shop.model.Criteria;
@@ -28,5 +29,8 @@ public interface AdminMapper {
 	
 	// 상품 정보 삭제
 	public int goodsDelete(int bookId);
+	
+	// 이미지 등록
+	public void imageEnroll(AttachImageVO vo);
 
 }

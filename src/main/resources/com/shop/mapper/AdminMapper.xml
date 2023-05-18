@@ -6,6 +6,10 @@
 
 	<!-- 상품 등록 -->
 	<insert id="bookEnroll">
+		<selectKey resultType="int" keyProperty="bookId" order="AFTER">
+			select book_seq.currval from dual
+		</selectKey>
+		
 		insert into vam_book(bookId,bookName, authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents)
 		values(book_seq.nextval, #{bookName},#{authorId},#{publeYear},#{publisher},#{cateCode},#{bookPrice}, #{bookStock}, #{bookDiscount},#{bookIntro},#{bookContents})
 	</insert>
@@ -71,4 +75,10 @@
 		delete from vam_book
 		where bookId=#{bookId}
 	</delete>
+	
+	<!-- 이미지 등록 -->
+	<insert id="imageEnroll">
+		insert into vam_image(bookId, fileName, uploadPath, uuid) 
+		values(#{bookId}, #{fileName}, #{uploadPath}, #{uuid})
+	</insert>
 </mapper>

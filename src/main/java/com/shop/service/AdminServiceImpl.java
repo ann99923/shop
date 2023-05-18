@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.mapper.AdminMapper;
 import com.shop.model.BookVO;
@@ -21,11 +22,21 @@ public class AdminServiceImpl implements AdminService {
 	private AdminMapper adminMapper;
 
 	// 상품 등록
+	@Transactional
 	@Override
 	public void bookEnroll(BookVO book) {
 		// TODO Auto-generated method stub
 		log.info("(service)bookEnroll...");
 		adminMapper.bookEnroll(book);
+		
+		if(book.getImageList() == null || book.getImageList().size() <= 0) {
+			return;
+		}
+		
+		book.getImageList().forEach(attach ->{
+			attach.setBookId(book.getBookId());
+			adminMapper.imageEnroll(attach);
+		});
 	}
 	
 	// 카테고리 리스트

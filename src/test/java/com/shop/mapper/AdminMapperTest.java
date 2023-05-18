@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.shop.model.AttachImageVO;
 import com.shop.model.BookVO;
 import com.shop.model.CateVO;
 import com.shop.model.Criteria;
@@ -20,23 +21,27 @@ public class AdminMapperTest {
 	private AdminMapper mapper;
 	
 	// 상품 등록
-//	@Test
-//	public void bookEnrollTest() {
-//		BookVO book = new BookVO();
-//		
-//		book.setBookName("mapper 테스트");
-//		book.setAuthorId(1);
-//		book.setPubleYear("2021-03-18");
-//		book.setPublisher("출판사");
-//		book.setCateCode("0231");
-//		book.setBookPrice(20000);
-//		book.setBookStock(300);
-//		book.setBookDiscount(0.23);
-//		book.setBookIntro("책 소개");
-//		book.setBookContents("책 목차");
-//		
-//		mapper.bookEnroll(book);
-//	}
+	@Test
+	public void bookEnrollTest() {
+		BookVO book = new BookVO();
+		
+		book.setBookName("mapper 테스트");
+		book.setAuthorId(1);
+		book.setPubleYear("2021-03-18");
+		book.setPublisher("출판사");
+		book.setCateCode("101003");
+		book.setBookPrice(20000);
+		book.setBookStock(300);
+		book.setBookDiscount(0.23);
+		book.setBookIntro("책 소개");
+		book.setBookContents("책 목차");
+		
+		System.out.println("Before BookVO: "  + book);
+		
+		mapper.bookEnroll(book);
+		
+		System.out.println("After BookVO: "  + book);
+	}
 	
 	
 	// 카테고리 리스트
@@ -93,15 +98,28 @@ public class AdminMapperTest {
 //	}
 	
 	// 상품 정보 삭제
-	@Test
-	public void goodsDeleteTest() {
-		int bookId = 2320;
-		int result = mapper.goodsDelete(bookId);
-		
-		if(result == 1) {
-			System.out.println("삭제 성공");
-		}
-	}
+//	@Test
+//	public void goodsDeleteTest() {
+//		int bookId = 2320;
+//		int result = mapper.goodsDelete(bookId);
+//		
+//		if(result == 1) {
+//			System.out.println("삭제 성공");
+//		}
+//	}
+	
+	// 이미지 등록
+//	@Test
+//	public void imageEnroll() {
+//		AttachImageVO vo = new AttachImageVO();
+//		
+//		vo.setBookId(2321);
+//		vo.setFileName("test");
+//		vo.setUploadPath("temp");
+//		vo.setUuid("test2");
+//		
+//		mapper.imageEnroll(vo);
+//	}
 	
 
 }
