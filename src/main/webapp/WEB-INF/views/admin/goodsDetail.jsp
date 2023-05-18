@@ -13,6 +13,16 @@
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
+<style type="text/css">
+	#result_card img{
+		max-width: 100%;
+	    height: auto;
+	    display: block;
+	    padding: 5px;
+	    margin-top: 10px;
+	    margin: auto;	
+	}
+</style>
 </head>
 <body>
 
@@ -144,6 +154,15 @@
 					</div>
 					<div class="form_section_content">
 						<textarea name="bookContents" id="bookContents_textarea" disabled>${goodsInfo.bookContents }</textarea>
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>상품 이미지</label>
+					</div>
+					<div class="form_section_content">
+						<div id="uploadResult">
+						</div>
 					</div>
 				</div>
 				
@@ -291,6 +310,36 @@
 				}
 			});
 			
+			/* 이미지 정보 호출 */
+			
+			let bookId = '<c:out value="${goodsInfo.bookId}" />';
+			let uploadResult = $("#uploadResult");
+			
+			$.getJSON("/getAttachList", {bookId : bookId}, function(arr){
+				
+
+				if(arr.length === 0){
+					let str = "";
+					str += "<div id='result_card'>";
+					str += "<img src='/resources/img/noImage.png'>";
+					str += "</div>";
+					
+					uploadResult.html(str);
+				}
+				
+				let str = "";
+				let obj = arr[0];
+
+				let fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+				str += "<div id='result_card'";
+				str += "data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'";
+				str += ">";
+				str += "<img src='/display?fileName=" + fileCallPath +"'>";
+				str += "</div>";
+				
+				uploadResult.html(str);
+			});
+
 		}); 	// $(document).ready
 		
 		/* 목록 이동 버튼 */
