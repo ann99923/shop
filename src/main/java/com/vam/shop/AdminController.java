@@ -1,10 +1,14 @@
 package com.vam.shop;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import javax.imageio.ImageIO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +29,8 @@ import com.shop.model.Criteria;
 import com.shop.model.PageDTO;
 import com.shop.service.AdminService;
 import com.shop.service.AuthorService;
+
+import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 @RequestMapping("/admin")
@@ -256,6 +262,41 @@ public class AdminController {
 		// 파일 저장
 		try {
 			uploadFile.transferTo(saveFile);
+			
+			// 썸네일 생성(ImageID)
+			/*
+			File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
+			
+			BufferedImage bo_image = ImageIO.read(saveFile);
+			
+			// 비율
+			double ratio = 3;
+			// 넓이 높이
+			int width = (int)(bo_image.getWidth() / ratio);
+			int height = (int)(bo_image.getHeight() / ratio);
+			
+			BufferedImage bt_image = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
+			
+			Graphics graphic = bt_image.createGraphics();
+			graphic.drawImage(bo_image, 0, 0, width, height, null);
+			ImageIO.write(bt_image, "jpg", thumbnailFile);
+			*/
+			
+			// 썸네일 생성 방법2
+			File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
+			
+			BufferedImage bo_image = ImageIO.read(saveFile);
+			
+			// 비율
+			double ratio = 3;
+			// 넓이 높이
+			int width = (int)(bo_image.getWidth() / ratio);
+			int height = (int)(bo_image.getHeight() / ratio);
+			
+			Thumbnails.of(saveFile)
+			.size(width,height)
+			.toFile(thumbnailFile);
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
