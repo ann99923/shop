@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -216,6 +217,22 @@ public class AdminController {
 		
 		rttr.addFlashAttribute("delete_result", result);
 		return "redirect:/admin/authorManage";
+	}
+	
+	// 첨부 파일 업로드
+	@PostMapping("/uploadAjaxAction")
+	public void uploadAjaxActionPOST(MultipartFile uploadFile) {
+		logger.info("uploadAjaxActionPOST...");
+		
+		logger.info("파일 이름: " + uploadFile.getOriginalFilename());
+		logger.info("파일 타입: " + uploadFile.getContentType());
+		logger.info("파일 크기: " + uploadFile.getSize());
+		
+		/* 파일 여러개일 경우
+		 * 메소드의 매개변수 타입을 배열로 지정 MultipartFile[]
+		 * for문으로 실행
+		 */
+		
 	}
 	
 }
