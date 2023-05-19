@@ -20,9 +20,9 @@ import com.shop.model.AttachImageVO;
 import com.shop.service.AttachService;
 
 @Controller
-public class ShopController {
+public class BookController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(ShopController.class);
+	private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 	
 	@Autowired
 	private AttachMapper attachMapper;

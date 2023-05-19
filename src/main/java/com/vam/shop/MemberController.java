@@ -36,7 +36,7 @@ public class MemberController {
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
 
-	private static final Logger logger = LoggerFactory.getLogger(ShopController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	// 로그인 페이지 이동
 	@GetMapping("/login")
