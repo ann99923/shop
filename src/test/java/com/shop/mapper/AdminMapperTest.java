@@ -130,9 +130,17 @@ public class AdminMapperTest {
 //	}
 	
 	// 어제자 날짜 이미지 리스트
+//	@Test
+//	public void checkImageListTest() {
+//		mapper.checkFileList();
+//	}
+	
+	// 지정 상품 이미지 정보 얻기
 	@Test
-	public void checkImageListTest() {
-		mapper.checkFileList();
+	public void getAttachInfoTest() {
+		int bookId = 2323;
+		List<AttachImageVO> list = mapper.getAttachInfo(bookId);
+		System.out.println("list: " + list);
 	}
 
 }

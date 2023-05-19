@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.mapper.AdminMapper;
+import com.shop.model.AttachImageVO;
 import com.shop.model.BookVO;
 import com.shop.model.CateVO;
 import com.shop.model.Criteria;
@@ -93,10 +94,21 @@ public class AdminServiceImpl implements AdminService {
 	
 	// 상품 삭제
 	@Override
+	@Transactional
 	public int goodsDelete(int bookId) {
 		// TODO Auto-generated method stub
 		log.info("goodsDelete..");
 		
+		adminMapper.deleteImageAll(bookId);
+		
 		return adminMapper.goodsDelete(bookId);
+	}
+	
+	// 지정 상품 이미지 정보 얻기
+	@Override
+	public List<AttachImageVO> getAttachInfo(int bookId) {
+		// TODO Auto-generated method stub
+		log.info("getAttachInfo...");
+		return adminMapper.getAttachInfo(bookId);
 	}
 }
