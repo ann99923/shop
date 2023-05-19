@@ -87,4 +87,10 @@
 		delete from vam_image
 		where bookId=#{bookId}
 	</delete>
+	
+	<!-- 어제자 날짜 이미지 리스트 -->
+	<select id="checkFileList" resultType="com.shop.model.AttachImageVO">
+		select * from vam_image
+		where uploadPath = to_char(sysdate -1, 'yyyy\mm\dd')
+	</select>
 </mapper>
