@@ -39,7 +39,14 @@
 					<a href="/main"><img src="resources/img/Logo.png"></a>
 				</div>
 				<div class="search_area">
-					<h1>search area</h1>
+					<div class="search_wrap">
+						<form id="searchForm" action="/search" method="get">
+							<div class="search_input">
+								<input type="text" name="keyword">
+								<button class="btn search_btn">검 색</button>
+							</div>
+						</form>
+					</div>
 				</div>
 				<div class="login_area">
 				<!-- 로그인하지 않은 경우 -->
