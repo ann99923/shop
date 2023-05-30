@@ -70,6 +70,6 @@
 	<!-- 작가 id 리스트 요청 -->
 	<select id="getAuthorIdList" resultType="String">
 		select authorId from vam_author
-		where authorName like '%' || #{keyword} || '%'
+		where authorName like '%' || #{keyword, jdbcType=VARCHAR} || '%'
 	</select>
 </mapper>
