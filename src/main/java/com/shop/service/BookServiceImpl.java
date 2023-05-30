@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.shop.mapper.AttachMapper;
 import com.shop.mapper.BookMapper;
+import com.shop.model.AttachImageVO;
 import com.shop.model.BookVO;
 import com.shop.model.Criteria;
 
@@ -16,10 +18,13 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class BookServiceImpl implements BookService {
 	
-	// 상품 검색
 	@Autowired
-	private  BookMapper bookMapper;
-
+	private BookMapper bookMapper;
+	
+	@Autowired
+	private AttachMapper attachMapper;
+	
+	// 상품 검색
 	@Override
 	public List<BookVO> getGoodsList(Criteria cri) {
 		// TODO Auto-generated method stub
@@ -41,7 +46,14 @@ public class BookServiceImpl implements BookService {
 			}
 		}
 		
-		return bookMapper.getGoodsList(cri);
+		List<BookVO> list = bookMapper.getGoodsList(cri);
+		list.forEach(book ->{
+			int bookId = book.getBookId();
+			List<AttachImageVO> imageList = attachMapper.getAttachList(bookId);
+			book.setImageList(imageList);
+		});
+		
+		return list;
 	}
 
 	// 상품 총 갯수
