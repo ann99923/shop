@@ -37,8 +37,11 @@ public class BookController {
 	
 	// 메인 페이지 이동
 	@GetMapping("/main")
-	public void mainPageGET() {
+	public void mainPageGET(Model model) {
 		logger.info("메인 페이지 진입");
+		model.addAttribute("cate1", bookService.getCateCode1());
+		model.addAttribute("cate2", bookService.getCateCode2());
+		
 	}
 	
 	// 이미지 출력

@@ -10,6 +10,7 @@ import com.shop.mapper.AttachMapper;
 import com.shop.mapper.BookMapper;
 import com.shop.model.AttachImageVO;
 import com.shop.model.BookVO;
+import com.shop.model.CateVO;
 import com.shop.model.Criteria;
 
 import lombok.extern.log4j.Log4j;
@@ -63,6 +64,22 @@ public class BookServiceImpl implements BookService {
 		log.info("goodsGetTotal..");
 		
 		return bookMapper.goodsGetTotal(cri);
+	}
+	
+	// 국내 카테고리 리스트
+	@Override
+	public List<CateVO> getCateCode1() {
+		// TODO Auto-generated method stub
+		log.info("getCateCode1..");
+		return bookMapper.getCateCode1();
+	}
+	
+	// 국외 카테고리 리스트
+	@Override
+	public List<CateVO> getCateCode2() {
+		// TODO Auto-generated method stub
+		log.info("getCateCode2..");
+		return bookMapper.getCateCode2();
 	}
 
 }

@@ -64,7 +64,6 @@
 						<span>회원 : ${member.memberName }</span>
 						<span>충전금액 : <fmt:formatNumber value="${member.money }" pattern="#,###.##"/></span>
 						<span>포인트 : <fmt:formatNumber value="${member.point }" pattern="#,###"/></span>
-						<a href="/member/logout.do">로그아웃</a>
 					</div>
 				</c:if>
 				</div>
@@ -76,12 +75,9 @@
 						<i class="fa fa-caret-down"></i>
 					</button>
 					<div class="dropdown-content">
-						<a href="/search?type=C&cateCode=202001">교양</a>
-						<a href="#">테스트2</a>
-						<a href="#">테스트3</a>
-						<a href="#">테스트4</a>
-						<a href="#">테스트5</a>
-						<a href="#">테스트6</a>
+						<c:forEach var="cate" items="${cate1 }">
+							<a href="/search?type=C&cateCode=${cate.cateCode }">${cate.cateName }</a>
+						</c:forEach>
 					</div>
 				</div>
 				<div class="dropdown">
@@ -89,12 +85,9 @@
 						<i class="fa fa-caret-down"></i>
 					</button>
 					<div class="dropdown-content">
-						<a href="#">테스트1</a>
-						<a href="#">테스트2</a>
-						<a href="#">테스트3</a>
-						<a href="#">테스트4</a>
-						<a href="#">테스트5</a>
-						<a href="#">테스트6</a>
+						<c:forEach var="cate" items="${cate2 }">
+							<a href="/search?type=C&cateCode=${cate.cateCode }">${cate.cateName }</a>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
