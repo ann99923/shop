@@ -10,6 +10,7 @@ import com.shop.mapper.AttachMapper;
 import com.shop.mapper.BookMapper;
 import com.shop.model.AttachImageVO;
 import com.shop.model.BookVO;
+import com.shop.model.CateFilterDTO;
 import com.shop.model.CateVO;
 import com.shop.model.Criteria;
 
@@ -80,6 +81,39 @@ public class BookServiceImpl implements BookService {
 		// TODO Auto-generated method stub
 		log.info("getCateCode2..");
 		return bookMapper.getCateCode2();
+	}
+	
+	// 검색결과 카테고리 필터 정보
+	@Override
+	public List<CateFilterDTO> getCateInfoList(Criteria cri) {
+		// TODO Auto-generated method stub
+		List<CateFilterDTO> filterInfoList = new ArrayList<CateFilterDTO>();
+		
+		String[] typeArr = cri.getType().split("");
+		String[] authorArr;
+		for(String type : typeArr) {
+			if(type.equals("A")) {
+				authorArr = bookMapper.getAuthorIdList(cri.getKeyword());
+				if(authorArr.length == 0) {
+					return filterInfoList;
+				}
+				cri.setAuthorArr(authorArr);
+			}
+		}
+		
+		String[] cateList = bookMapper.getCateList(cri);
+		
+		String tempCateCode = cri.getCateCode();
+		
+		for(String cateCode : cateList) {
+			cri.setCateCode(cateCode);
+			CateFilterDTO filterInfo = bookMapper.getCateInfo(cri);
+			filterInfoList.add(filterInfo);
+		}
+		
+		cri.setCateCode(tempCateCode);
+		
+		return filterInfoList;
 	}
 
 }

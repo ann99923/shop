@@ -1,14 +1,11 @@
 package com.shop.mapper;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.shop.model.BookVO;
 import com.shop.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,7 +34,7 @@ public class BookMapperTest {
 	/* 작가 id 리스트 요청 */
 //	@Test
 //	public void getAuthorId() {
-//		String keyword = "폴";
+//		String keyword = "작가1";
 //		String[] list = mapper.getAuthorIdList(keyword);
 //		
 //		System.out.println("결과: " + list.toString());
@@ -107,24 +104,24 @@ public class BookMapperTest {
 //	}
 	
 	/* 검색(동적 쿼리 적용) - 카테고리 + 작가 */
-	@Test
-	public void getGoodsListTest4() {
-		Criteria cri = new Criteria();
-		String type= "AC";
-		String keyword1 = "작가1";	// DB에 등록된 작가 데이터
-	//	String keyword2 = "없음";		// DB에 등록되지 않은 작가 데이터
-		String cateCode = "101001";
-		
-		cri.setType(type);
-		cri.setKeyword(keyword1);
-		cri.setAuthorArr(mapper.getAuthorIdList(keyword1));
-		cri.setCateCode(cateCode);
-		
-		List<BookVO> list = mapper.getGoodsList(cri);
-		
-		System.out.println("cri: " + cri);
-		System.out.println("list: " + list);
-	}
+//	@Test
+//	public void getGoodsListTest4() {
+//		Criteria cri = new Criteria();
+//		String type= "AC";
+//		String keyword1 = "작가1";	// DB에 등록된 작가 데이터
+//	//	String keyword2 = "없음";		// DB에 등록되지 않은 작가 데이터
+//		String cateCode = "101001";
+//		
+//		cri.setType(type);
+//		cri.setKeyword(keyword1);
+//		cri.setAuthorArr(mapper.getAuthorIdList(keyword1));
+//		cri.setCateCode(cateCode);
+//		
+//		List<BookVO> list = mapper.getGoodsList(cri);
+//		
+//		System.out.println("cri: " + cri);
+//		System.out.println("list: " + list);
+//	}
 	
 	/* 검색(동적 쿼리 적용) - 카테고리 + 책제목 */
 //	@Test
@@ -145,5 +142,40 @@ public class BookMapperTest {
 //		System.out.println("cri: " + cri);
 //		System.out.println("list: " + list);
 //	}
+	
+	/* 카테고리 테스트 */
+//	@Test
+//	public void getCateListTest1() {
+//		Criteria cri = new Criteria();
+//		
+//		String type = "TC";
+//		String keyword = "이미지";
+////		String type = "A";
+////		String keyword = "작가1";
+//		
+//		cri.setType(type);
+//		cri.setKeyword(keyword);
+//		cri.setAuthorArr(mapper.getAuthorIdList(keyword));
+//		
+//		String[] cateList = mapper.getCateList(cri);
+//		for(String codeNum : cateList) {
+//			System.out.println("codeNum::::: " + codeNum);
+//		}
+//	}
+	
+	/* 카테고리 정보 얻기 */
+	@Test
+	public void getCateInfoTest1() {
+		Criteria cri = new Criteria();
+		
+		String type = "TC";
+		String keyword = "이미지";
+		String cateCode = "101001";
+		
+		cri.setType(type);
+		cri.setKeyword(keyword);
+		cri.setCateCode(cateCode);
+		mapper.getCateInfo(cri);
+	}
 
 }

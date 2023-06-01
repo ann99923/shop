@@ -72,6 +72,7 @@
 			</div>
 			<div class="content_area">
 				<!-- 게시물 o -->
+				${filter_info }
 				<c:if test="${listCheck != 'empty' }">
 					<div class="list_search_result">
 						<table class="type_list">
